@@ -1,0 +1,29 @@
+name: CI
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+    branches: [main, master]
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Install and test
+        run: |
+          if (Test-Path package.json) {
+            npm ci
+            npm test
+            npm run build
+          } else {
+            Write-Host "No package.json yet — spec-only commit."
+          }
+        shell: pwsh
