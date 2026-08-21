@@ -1,0 +1,24 @@
+{
+  "name": "grok-discord-remote",
+  "version": "0.1.0",
+  "description": "Discord remote client for Grok Build (ACP)",
+  "type": "module",
+  "main": "dist/host.js",
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/host.js",
+    "test": "vitest run --reporter=verbose"
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "dependencies": {
+    "discord.js": "^14.16.3",
+    "dotenv": "^16.4.7"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "typescript": "^5.5.4",
+    "vitest": "^2.1.9"
+  }
+}
