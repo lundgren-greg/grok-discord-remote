@@ -4,7 +4,7 @@ File: `%USERPROFILE%\.grok-discord-remote\sessions.json` (config override).
 
 ```json
 {
-  "discord:543237713038409748": {
+  "discord:YOUR_USER_ID": {
     "sessionId": "<uuid>",
     "cwd": "C:\\Repos",
     "updatedAt": "2026-08-21T00:00:00Z"

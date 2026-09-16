@@ -2,11 +2,11 @@
 
 ## Objective
 
-Greg DMs a Discord bot on his phone. That message is a prompt to **Grok Build on GREG-PC**. Replies stream back to the DM. At the desk he runs `grok --resume <session-id>` (or the welcome picker) and continues **the same conversation**.
+You DM a Discord bot on your phone. That message is a prompt to **Grok Build on your PC**. Replies stream back to the DM. At the desk you run `grok --resume <session-id>` (or the welcome picker) and continue **the same conversation**.
 
 Success: a DM and a later TUI resume share one session under `~\.grok\sessions\`.
 
-User: Greg (Discord user `543237713038409748`), America/Chicago, Windows host.
+Operator: one trusted Discord user (allowlist), Windows host, Grok Build installed and signed in.
 
 ## Assumptions
 
@@ -15,7 +15,7 @@ User: Greg (Discord user `543237713038409748`), America/Chicago, Windows host.
 3. A **new** Discord bot (do not steal OpenClaw's running token).
 4. ACP is the integration: `grok agent stdio` or `grok agent serve --bind 127.0.0.1:<port> --secret`.
 5. Default cwd for new sessions: `C:\Repos` (config).
-6. Cloud Copilot implements and tests with mocks; it cannot talk to live Discord or Greg's `grok`.
+6. CI and Copilot implement/tests use mocks; they cannot talk to live Discord or a personal `grok`.
 
 ## Tech Stack
 

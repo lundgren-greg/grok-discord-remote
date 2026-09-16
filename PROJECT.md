@@ -3,11 +3,11 @@
 | Field | Value |
 | --- | --- |
 | **Status** | v1 implemented; tests green |
-| **Updated** | 2026-08-21 |
+| **Updated** | 2026-09-16 |
 
 ## Stopped at
 
-v1 fully implemented by cloud agent:
+v1 implemented by cloud agent and reviewed:
 
 - `src/config.ts` — env/config loader
 - `src/security.ts` — allowlist + DM-only helpers
@@ -29,5 +29,6 @@ v1 fully implemented by cloud agent:
 ## Decisions log
 
 - 2026-08-21: Not recap-bridge. Not OpenClaw-as-brain. Discord is a remote client of Grok ACP sessions.
+- 2026-08-21: GitHub repo is **public**. Others who run Grok Build and want Discord as the phone window can use it. Personal Discord ids stay out of the repo.
 - 2026-08-21: ACP over stdio (`grok agent stdio`); WebSocket serve mode left as future work.
-- 2026-08-21: One AcpClient spawned per message; session id persisted to `~/.grok-discord-remote/sessions.json`.
+- 2026-08-21: One shared long-lived AcpClient; session id persisted to `~/.grok-discord-remote/sessions.json`.
