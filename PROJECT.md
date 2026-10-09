@@ -7,7 +7,7 @@
 
 ## Stopped at
 
-v1 is already on `main`; this PR only adds coverage for ACP chunk assembly and refreshes project status:
+v1 is on `main`, with ACP chunk assembly covered by tests:
 
 - `src/config.ts` — env/config loader
 - `src/security.ts` — allowlist + DM-only helpers

@@ -16,7 +16,7 @@ function makeMsg(content: string) {
 
   return {
     author: {
-      id: "543237713038409748",
+      id: "100000000000000001",
       bot: false,
     },
     channel: {
@@ -104,7 +104,7 @@ const SESSION_MAP_PATH = join(TMP, "sessions.json");
 
 const config: Config = {
   discordBotToken: "fake-token",
-  allowFrom: ["543237713038409748"],
+  allowFrom: ["100000000000000001"],
   grokCwd: "C:\\Repos",
   grokAlwaysApprove: false,
   grokAgentUrl: undefined,
