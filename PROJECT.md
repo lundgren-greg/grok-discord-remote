@@ -2,12 +2,12 @@
 
 | Field | Value |
 | --- | --- |
-| **Status** | v1 implemented; tests green |
-| **Updated** | 2026-09-16 |
+| **Status** | v1 is on `main`; chunked ACP prompt replies now proved by tests; suite green |
+| **Updated** | 2026-09-21 |
 
 ## Stopped at
 
-v1 implemented by cloud agent and reviewed:
+v1 is on `main`, with ACP chunk assembly covered by tests:
 
 - `src/config.ts` — env/config loader
 - `src/security.ts` — allowlist + DM-only helpers
@@ -15,16 +15,17 @@ v1 implemented by cloud agent and reviewed:
 - `src/session-map.ts` — persist Discord user → session id
 - `src/discord-bot.ts` — Discord DM bot; `/new`, `/status`, prompt relay
 - `src/host.ts` — process entrypoint
-- `tests/` — 25 tests, all passing (no live Discord or Grok)
+- `tests/` — existing Discord/ACP mocks kept; added chunked ACP-to-DM coverage with no live Discord or Grok
 - `scripts/Install-GrokDiscordRemote.ps1` — Windows scheduled task installer (WhatIf)
 - `package.json`, `tsconfig.json`, `vitest.config.ts`
 
 ## Next
 
-1. Human: create a **new** Discord bot app at discord.com/developers, copy token to `.env`.
-2. Set `DISCORD_ALLOW_FROM` to your Discord snowflake id.
+1. Human: create a **new** Discord bot app at discord.com/developers, copy token to local `.env`.
+2. Set `DISCORD_ALLOW_FROM` locally to your Discord snowflake id; keep ids/tokens out of git because the repo is public.
 3. `npm ci && npm start`
 4. DM the bot; resume at desk with `grok --resume <session-id>`.
+5. If ACP chunk/result shapes change in Grok Build, extend the mock ACP tests before changing host logic.
 
 ## Decisions log
 

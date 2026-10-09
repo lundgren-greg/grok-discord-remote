@@ -23,6 +23,12 @@ import type { Config } from "./config.js";
 
 const TYPING_INTERVAL_MS = 5000;
 
+function userErrorMessage(err: unknown, fallback: string): string {
+  const message = err instanceof Error ? err.message : String(err);
+  const firstLine = message.split(/\r?\n/, 1)[0]?.trim();
+  return firstLine || fallback;
+}
+
 export class DiscordBot {
   private client: Client;
   private readonly config: Config;
@@ -151,7 +157,7 @@ export class DiscordBot {
         `✅ New Grok session started.\nSession id: \`${sessionId}\`\nResume at desk: \`grok --resume ${sessionId}\``
       );
     } catch (err: unknown) {
-      const message = err instanceof Error ? err.message : String(err);
+      const message = userErrorMessage(err, "Could not start new session.");
       await msg.reply(`❌ Could not start new session: ${message}`);
     }
   }
@@ -205,7 +211,7 @@ export class DiscordBot {
         }
       }
     } catch (err: unknown) {
-      const message = err instanceof Error ? err.message : String(err);
+      const message = userErrorMessage(err, "Request failed.");
       await msg.reply(`❌ ${message}`);
     } finally {
       clearInterval(typingInterval);

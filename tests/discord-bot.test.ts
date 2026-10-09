@@ -160,13 +160,16 @@ describe("DiscordBot.handleMessage", () => {
     expect(mockAcpPrompt).toHaveBeenCalledTimes(2);
   });
 
-  it("ACP error replies with user-friendly message", async () => {
-    mockAcpStart.mockRejectedValue(new Error("Grok Build is not running on the PC."));
+  it("ACP error replies with a short user-facing message", async () => {
+    mockAcpStart.mockRejectedValue(
+      new Error("Grok Build is not running on the PC.\n    at fake-stack:1:1")
+    );
     const bot = new DiscordBot(config);
     const msg = makeMsg({ content: "hi" });
     await bot.handleMessage(msg as unknown as Message);
     const replyText = (msg.reply as ReturnType<typeof vi.fn>).mock.calls[0][0] as string;
-    expect(replyText).toContain("Grok Build");
+    expect(replyText).toBe("❌ Grok Build is not running on the PC.");
+    expect(replyText).not.toContain("fake-stack");
   });
 });
 
